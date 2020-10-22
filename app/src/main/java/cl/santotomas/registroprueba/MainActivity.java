@@ -3,6 +3,7 @@ package cl.santotomas.registroprueba;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
         btn_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+               /** Prueba de Sqlite */
+                AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(MainActivity.this, "administrador", null, 1);
+                SQLiteDatabase  baseDeDatos = admin.getWritableDatabase();
+
+
+
                 EditText txt_nombre = (EditText)findViewById(R.id.name_edit);
                 EditText txt_apellido = (EditText)findViewById(R.id.last_name_edit);
                 EditText txt_edad = (EditText)findViewById(R.id.age_edit);
@@ -32,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 e1.setNombre(txt_nombre.getText().toString());
                 e1.setApellidos(txt_apellido.getText().toString());
                 e1.setEdad(txt_edad.getText().toString());
+
+
 
                // Toast.makeText(MainActivity.this, e1.getNombre(), Toast.LENGTH_LONG).show();
 
